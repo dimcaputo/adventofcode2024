@@ -12,11 +12,9 @@ with open('/Users/dimitricaputo/Downloads/input') as f:
 sorted_lst1 = list(sorted(lst1))
 sorted_lst2 = list(sorted(lst2))
 
-lst3 = []
+sum_diffs = 0
 for item1,item2 in zip(sorted_lst1,sorted_lst2):
-    lst3.append(abs(item1-item2))
-
-sum_diffs = sum(lst3)
+    sum_diffs += abs(item1-item2)
 
 print(sum_diffs)
 
