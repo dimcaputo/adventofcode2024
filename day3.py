@@ -18,12 +18,14 @@ for item in change_to_tup:
 
 
 # Part 2
+txt_copy = txt
+remove_portions = re.findall(r'don\'t\(\).*do\(\)',txt_copy)
 
-remove_portions = re.sub(r'don\'t\(\).*do\(\)','',txt)
-search_for_mul2 = re.findall(r'mul\(\d{1,3}\,\d{1,3}\)', remove_portions)
+for item in remove_portions:
+    txt_copy.replace(item, '')
 
-print(len(txt))
-print(len(remove_portions))
+search_for_mul2 = re.findall(r'mul\(\d{1,3}\,\d{1,3}\)', txt_copy)
+
 
 change_to_tup2 = []
 
