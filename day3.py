@@ -1,6 +1,6 @@
 import regex as re
 
-with open('/Users/dimitricaputo/Downloads/input3.txt') as f:
+with open('/home/dimitri.caputo@Digital-Grenoble.local/Downloads/input3') as f:
     txt = f.read()
 
 search_for_mul = re.findall(r'mul\(\d{1,3}\,\d{1,3}\)', txt)
@@ -19,13 +19,12 @@ for item in change_to_tup:
 
 # Part 2
 txt_copy = txt
-remove_portions = re.findall(r'don\'t\(\).*do\(\)',txt_copy)
 
-for item in remove_portions:
-    txt_copy.replace(item, '')
+lstsepdo = txt_copy.split('do()')
+lst_sepsep = [item.split("don't")[0] for item in lstsepdo]
+new_txt = ''.join(lst_sepsep)
 
-search_for_mul2 = re.findall(r'mul\(\d{1,3}\,\d{1,3}\)', txt_copy)
-
+search_for_mul2 = re.findall(r'mul\(\d{1,3}\,\d{1,3}\)', new_txt)
 
 change_to_tup2 = []
 
