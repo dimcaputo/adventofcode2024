@@ -26,20 +26,43 @@ sum_middle = 0
 def check_updates(lst_lst, lst_tup):
     for lst in lst_lst:
         is_okay = True
-        for i in range(len(lst)-1):
-            if (lst[i+1], lst[i]) in lst_tup:
-                is_okay = False
+        for i in range(len(lst)):
+            for j in range(i, len(lst)):
+                if (lst[j], lst[i]) in lst_tup:
+                    is_okay = False
         if is_okay == True:
             okay.append(lst)
 
 check_updates(to_print, order_pages)            
 
 for lst in okay:
-    if len(lst)%2 != 0:
-        mid = int(len(lst)/2)
-        sum_middle += int(lst[mid])
+    mid = int(len(lst)/2)
+    sum_middle += int(lst[mid])
 
 print(sum_middle)
+
+# Part 2
+
+left_to_print = [lst for lst in to_print if lst not in okay]
+
+sum_middle_2 = 0
+modified = []
+
+def modify_updates(lst_lst, lst_tup):
+    for lst in lst_lst:
+        for i in range(len(lst)):
+            for j in range(i, len(lst)):
+                if (lst[j], lst[i]) in lst_tup:
+                    (lst[j], lst[i]) = (lst[i], lst[j])
+        modified.append(lst)
+
+modify_updates(left_to_print, order_pages)
+
+for lst in modified:
+    mid = int(len(lst)/2)
+    sum_middle_2 += int(lst[mid])
+
+print(sum_middle_2)
 
 
         
